@@ -9,6 +9,8 @@ window.CODEFOLIO_CONFIG = {
   deadline: '',
   // Public URL of the separately deployed submission Worker, no trailing slash.
   // Example: 'https://codefolio-submissions.YOUR-SUBDOMAIN.workers.dev'
+  // Public Pages source: https://github.com/srireveshjay/Codefolio
+  // Connect a separately deployed Worker for the PRIVATE srireveshjay/Codefolio-records repository.
   submissionApiUrl: '',
   submissionUrl: ''
 };
