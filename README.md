@@ -6,11 +6,11 @@ Upload this website folder's CONTENTS to the public srireveshjay/Codefolio GitHu
 
 1. Enter name, roster roll number and section.
 2. Fill the Java, Python and C++ templates for BFS, DFS, Dijkstra, Prim and Kruskal in edge-list, adjacency-list and adjacency-matrix form, plus the DSU and heap ADTs.
-3. Click **Record submission & download PDF**. No student private code or sign-in is required.
+3. Click **Download PDF**. The file is generated locally, its download is requested, and the completion list is updated automatically. No separate record button, student private code or sign-in is required.
 4. Only the assignment ID and roll number are sent to the submission-list service. It records the matching roster name, roll, section and server submission time. The service never receives the programs or PDF.
 5. All programs are combined into a PDF locally in the browser and downloaded for the student.
 
-**Downloading a PDF only** does not mark the student as submitted. The record button works after the separate status-list service is deployed and its URL is added as submissionApiUrl in config.js.
+The same PDF button automatically attempts to log completion after the download request. Logging works only after the separate service is deployed and its URL is added as submissionApiUrl in config.js. If logging is unavailable, the PDF still downloads and the page clearly reports that completion was not logged. Browsers cannot confirm that the user saved the file: Completed means PDF download requested, not verified file saving or algorithm correctness. Re-downloading an already logged receipt does not add another acknowledgement; generating a fresh PDF creates a new download event.
 
 ## Programs are not saved
 
@@ -28,7 +28,7 @@ The separate server uses a private repository containing the complete roster. Ea
 
 schema, assignmentId, name, roll, section, id, created, status
 
-Files are stored under `receipts/graph-algorithms-v1/ROLL/TIMESTAMP-ID.json`. The human-readable list is `logs/graph-algorithms-v1.md`, showing Submitted / Not submitted for every roster student.
+Files are stored under `receipts/graph-algorithms-v1/ROLL/TIMESTAMP-ID.json`. The human-readable list is `logs/graph-algorithms-v1.md`, showing Completed (PDF download requested) / Not completed for every roster student.
 
 The faculty.html dashboard shows the list and exports status CSV. It has no code viewer, source download, or student-code generator. A faculty-only access key protects the private class list; students do not need it.
 
