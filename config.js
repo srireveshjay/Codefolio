@@ -7,10 +7,10 @@ window.CODEFOLIO_CONFIG = {
   prompt: 'Implement BFS, DFS, Dijkstra, Prim and Kruskal in Java, Python and C++. Implement each algorithm directly for all three graph representations: edge list, adjacency list and adjacency matrix (15 algorithm implementations per language). Implement your own Disjoint-Set Union ADT with path compression and union by rank or size for Kruskal. Implement your own indexed binary min-heap priority queue for Dijkstra and Prim; do not use a built-in priority queue or library DSU. Fill all template function bodies. Support zero-weight edges, disconnected graphs and isolated vertices. BFS/DFS visit the source component; Prim/Kruskal return a minimum spanning forest. Dijkstra must reject negative-weight edges and report unreachable vertices. Explain and demonstrate your operations in main().',
   // Set a deadline in BOTH this file and the private assignment configuration.
   deadline: '',
-  // Public URL of the separately deployed submission Worker, no trailing slash.
+  // Public URL of the separately deployed status-list Worker, no trailing slash.
   // Example: 'https://codefolio-submissions.YOUR-SUBDOMAIN.workers.dev'
   // Public Pages source: https://github.com/srireveshjay/Codefolio
-  // Connect a separately deployed Worker for the PRIVATE srireveshjay/Codefolio-records repository.
+  // Connect a status-only Worker for the PRIVATE srireveshjay/Codefolio-records repository.
   submissionApiUrl: '',
   submissionUrl: ''
 };

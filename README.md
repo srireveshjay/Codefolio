@@ -1,57 +1,47 @@
-# Codefolio — graph algorithms edition
+# Codefolio — graph templates and submission list only
 
-Upload the contents of THIS website folder to your public GitHub Pages repository. No npm or Node.js is needed for the public website. Do not upload your real class roster, credentials, private source records, or the private-repository setup folder here.
+Upload this website folder's CONTENTS to the public srireveshjay/Codefolio GitHub Pages repository. No npm or Node.js is required for the website.
 
-## Assignment and blank templates
+## Student workflow
 
-The question covers BFS, DFS, Dijkstra, Prim and Kruskal in Java, Python and C++, each operating directly on edge-list, adjacency-list and adjacency-matrix representations: 15 algorithm implementations per language. Students also implement their own path-compressed/rank-or-size DSU and an indexed binary min-heap priority queue.
+1. Enter name, roster roll number and section.
+2. Fill the Java, Python and C++ templates for BFS, DFS, Dijkstra, Prim and Kruskal in edge-list, adjacency-list and adjacency-matrix form, plus the DSU and heap ADTs.
+3. Click **Record submission & download PDF**. No student private code or sign-in is required.
+4. Only the assignment ID and roll number are sent to the submission-list service. It records the matching roster name, roll, section and server submission time. The service never receives the programs or PDF.
+5. All programs are combined into a PDF locally in the browser and downloaded for the student.
 
-Each language opens with commented function signatures and empty placeholder bodies. Throwing/raising a TODO exception is a placeholder, not a solution. Fields, types and signatures are supplied; algorithm and ADT implementations are not. Original templates are also in templates/. The source views are editable. A placeholder count is a completion aid, not an evaluation of correctness.
+**Downloading a PDF only** does not mark the student as submitted. The record button works after the separate status-list service is deployed and its URL is added as submissionApiUrl in config.js.
 
-Copy/paste, copy/cut shortcuts and text drops are blocked only inside code editors. These restrictions can be bypassed. There is no compiler, plagiarism detector or authorship guarantee.
+## Programs are not saved
 
-## Private GitHub submission log
+- Source code is held in browser memory only, with no localStorage/sessionStorage autosave.
+- No program, PDF or source-code hash is sent to the server or GitHub.
+- Closing or reloading the page can lose work. Download the PDF first. The page requests the browser's usual unsaved-work warning after edits, but browsers may suppress it.
+- Earlier v1/v2 device drafts for this assignment are moved to page memory and their stored copies removed on first opening this updated version.
+- Downloaded PDFs are intentionally saved on the student's own device. They are not uploaded by this website.
 
-This feature requires the separate submission service included in the overall update package. Read SETUP-PRIVATE-SUBMISSIONS.md in that package. GitHub Pages cannot safely write to a private repository by itself.
+The assignment retains the blank commented templates, typing-only editors, placeholder checklist, line numbers and combined PDF layout. Paste blocking can be bypassed, and completion checks do not grade correctness. There is no compiler.
 
-Once configured, students enter their roll number and faculty-issued submission code and click **Submit to faculty & download PDF**. The service validates the code, takes the student's official name and section from the private roster, enforces the private assignment deadline, saves all three programs in one JSON source record and returns a receipt.
+## Submission list in GitHub
 
-Private repository paths:
+The separate server uses a private repository containing the complete roster. Each acknowledgement stores ONLY these fields:
 
-- `submissions/graph-algorithms-v1/ROLL/TIMESTAMP-RECEIPT_ID.json`: original source and metadata; each attempt is separate.
-- `logs/graph-algorithms-v1.md`: human-readable Submitted / Not submitted status for every roster student, with source-record links.
-- `config/roster.json`: full class roster used to determine non-submitters.
+schema, assignmentId, name, roll, section, id, created, status
 
-The public **faculty.html** page requires the faculty key to display records. It shows missing students, attempts and submitted code; exports status CSV; generates individual student submission codes; and downloads Java, Python, C++ or combined PDF snapshots. **Sync log in GitHub** rebuilds the repository summary after a roster change or a log-update failure. The live dashboard calculates status directly from source records rather than relying on a possibly stale summary file.
+Files are stored under `receipts/graph-algorithms-v1/ROLL/TIMESTAMP-ID.json`. The human-readable list is `logs/graph-algorithms-v1.md`, showing Submitted / Not submitted for every roster student.
 
-A submission is successful only after the service confirms the source-record GitHub commit. If updating the separate Markdown log fails, the saved source remains valid and the student sees a notice for faculty follow-up. Resubmissions create new files; earlier attempts remain. A lost network response may leave a saved attempt even when the browser cannot confirm it; check the faculty log before retrying.
+The faculty.html dashboard shows the list and exports status CSV. It has no code viewer, source download, or student-code generator. A faculty-only access key protects the private class list; students do not need it.
 
-Until `submissionApiUrl` is configured in config.js, the website clearly reports that repository submissions are unavailable. Downloading a PDF alone never marks a student as submitted.
+Student identity is self-reported. Matching a roll to the roster does NOT authenticate that student: someone else could enter the roll. The list is an acknowledgement, not proof of independent work or correct algorithms. Because code is not sent, the server cannot verify completion of templates.
 
-## Update the public website
+## Setup
 
-1. Open your existing GitHub Pages repository.
-2. Upload the contents of this website folder, including assets/, templates/, templates.js, faculty.html and faculty.js. Replace existing files. index.html must remain at the repository root.
-3. Commit the changes and wait for the Pages deployment.
-4. Edit config.js to set the public submission API URL after deploying the separate service.
-5. Refresh the page; use a hard refresh if an older version is cached.
+Read CONNECT-YOUR-REPOSITORIES.md and SETUP-PRIVATE-SUBMISSIONS.md in the overall ZIP. Keep the roster and status records in PRIVATE srireveshjay/Codefolio-records. Put only website/ contents in the public repository. The package has not been uploaded or connected to your live accounts.
 
-Edit the assignment in config.js. The authoritative assignment ID, title, prompt, course and deadline also belong in the private repository's assignment JSON. The server checks its private configuration and does not trust browser-supplied assignment text or time.
+For the server, only GITHUB_TOKEN and FACULTY_TOKEN secrets are needed. There is no ENROLLMENT_SECRET or per-student password. Remove the old Worker secret if upgrading an earlier setup; it is unused.
 
-## Local use and data
+This version does not delete code that might already exist in an older repository or its Git history. It ignores old source-record paths and creates new status-only receipts. No earlier live student records were created during this session.
 
-Double-click index.html to inspect the page and work with templates. The production submission service accepts only your configured HTTPS website origin, so online submission must be tested from GitHub Pages rather than a file:// page.
+## Checks
 
-Drafts are device-local, scoped by assignment ID and version, and contain student details and code. Private submission codes are not saved in browser storage. Clear work on shared computers. Clearing restores the blank templates and removes personal details; it does not delete existing private-repository submissions. Download source/PDF copies before clearing unfinished work.
-
-The PDF includes all programs, line numbers, roll-number footers, receipt ID, content hash and submission status. A recorded PDF uses the roster identity and server time. The hash is a content checksum, not a cryptographic faculty signature or proof of authorship. Unsupported glyphs are reported explicitly rather than silently changed. Print / Save as PDF is the fallback for browser-supported scripts.
-
-## Verification completed
-
-- Java template compiles; C++17 template passes syntax checking; Python template parses.
-- All five algorithms appear in each representation in each language.
-- Student UI checks with a simulated DOM cover templates, placeholder counts, paste prevention, code retention, local-only PDF status, repository submission, roster identity, no code-secret persistence and reset.
-- Mock GitHub API checks cover private-repository enforcement, origin restrictions, faculty authorization, per-roll codes, roster identity, deadlines, TODO rejection, concurrent-write conflict retry, separate attempts, Markdown logs, missing students and protected source access.
-- Multi-page combined PDFs parse and preserve source text; previous PDF cover layout was visually inspected.
-
-Live submission and full browser checks are still pending deployment and your repository configuration. No repository was connected or modified during preparation.
+Simulated UI checks confirm no source in network requests, no code-storage writes, no private-code field, local PDF generation and metadata-only acknowledgement. Mock GitHub API tests confirm metadata-only repository records, rejection of source/PDF/hash payloads, roster matching, deadlines, status lists, private-repository checks and removal of enrollment/source-record endpoints. Live GitHub integration and full browser checks remain pending deployment.
